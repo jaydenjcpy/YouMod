@@ -232,7 +232,7 @@
 // %end
 
 %hook YTModularPlayerBarController
-- (void)setEnableSnapToChapter:(BOOL)arg { %orig(YES); }
+- (void)setEnableSnapToChapter:(BOOL)arg { %orig(NO); }
 %end
 
 // Disable Hints
