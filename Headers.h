@@ -22,6 +22,7 @@
 #import <YouTubeHeader/ASCollectionElement.h>
 #import <YouTubeHeader/ASCollectionView.h>
 #import <YouTubeHeader/ELMNodeController.h>
+#import <YouTubeHeader/YTMainAppControlsOverlayView.h>
 
 #define IS_ENABLED(k) [[NSUserDefaults standardUserDefaults] boolForKey:k]
 #define YTPremiumLogo @"YouModYTPremiumLogo"
@@ -151,10 +152,6 @@
 @property (nonatomic, weak, readwrite) YTScrollableNavigationController *navigationController;
 @end
 
-@interface YTPlayerResponse : NSObject
-@property (nonatomic, assign, readonly) YTIPlayerResponse *playerData;
-@end
-
 @interface YTMainAppControlsOverlayView : UIView
 @property (nonatomic, strong, readwrite) YTPlayerViewController *playerViewController;
 @end
@@ -171,15 +168,6 @@
 - (void)turnShortsOnlyModeOff:(UILongPressGestureRecognizer *)gesture;
 @end
 
-@interface YTReelPlayerViewController : UIViewController
-@property (nonatomic, strong, readwrite) YTPlayerViewController *player;
-- (void)reelContentViewRequestsAdvanceToNextVideo:(id)video;
-@end
-
-@interface YTShortsPlayerViewController : YTReelPlayerViewController
-@property (nonatomic, weak, readwrite) YTScrollableNavigationController *navigationController;
-@end
-
 @interface YTPivotBarViewController ()
 @property (nonatomic, weak, readwrite) YTShortsPlayerViewController *scrubberDelegate;
 @end
@@ -190,10 +178,6 @@
 
 @interface YTEngagementPanelHeaderView : UIView
 @property (nonatomic, assign, readonly) YTQTMButton *closeButton;
-@end
-
-@interface YTWatchViewController : UIViewController
-@property (nonatomic, weak, readwrite) YTPlayerViewController *playerViewController;
 @end
 
 @interface YTEngagementPanelContainerController : UIViewController
@@ -215,10 +199,6 @@
 - (void)didTapCopyInfoButton:(UIButton *)sender;
 @end
 
-@interface YTSegmentableInlinePlayerBarView : UIView
-@property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
-@end
-
 @interface YTPlayabilityResolutionUserActionUIController : NSObject
 - (void)confirmAlertDidPressConfirm;
 @end
@@ -227,7 +207,7 @@
 - (void)confirmAlertDidPressConfirm;
 @end
 
-@interface YTReelPlayerButton : YTQTMButton
+@interface YTReelPlayerButton : YTQTMButton // sus
 @end
 
 @interface ELMCellNode
@@ -239,9 +219,6 @@
 
 @interface YTAsyncCollectionView : UICollectionView
 - (void)removeCellsAtIndexPath:(NSIndexPath *)indexPath;
-@end
-
-@interface YTReelTransparentStackView : UIStackView
 @end
 
 @interface YTELMView : UIView
@@ -258,36 +235,6 @@
 @property (atomic) CALayer *layer;
 @end
 
-@interface ELMContainerNode : ASDisplayNode
-@property (nonatomic, strong, readwrite) NSString *copiedComment;
-@property (nonatomic, strong, readwrite) NSURL *copiedURL;
-@end
-
-@interface ELMExpandableTextNode : ASDisplayNode
-@property (atomic, assign, readonly) ASDisplayNode *currentTextNode;
-@end
-
-@interface ASNetworkImageNode : ASDisplayNode
-@property (atomic, copy, readwrite) NSURL *URL;
-@end
-
-@interface YTImageZoomNode : ASNetworkImageNode
-@end
-
-@interface ASTextNode : ASDisplayNode
-@property (atomic, copy, readwrite) NSAttributedString *attributedText;
-@end
-
-@interface YTInlinePlayerScrubUserEducationView : UIView
-@property (nonatomic, assign, readwrite) NSUInteger labelType;
-- (YTLabel *)userEducationLabel;
-- (void)setVisible:(BOOL)visible;
-@end
-
-@interface YTMainAppVideoPlayerOverlayViewController : UIViewController
-@property (nonatomic, weak, readwrite) YTPlayerViewController *parentViewController;
-- (CGFloat)currentPlaybackRate;
-@end
 
 @interface YTMainAppVideoPlayerOverlayView : UIView
 @property (nonatomic, assign, readonly) YTInlinePlayerScrubUserEducationView *scrubUserEducationView;
