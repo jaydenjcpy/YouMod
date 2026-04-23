@@ -2,7 +2,42 @@
 #import <YouTubeHeader/_ASDisplayView.h>
 #import <YouTubeHeader/YTInlinePlayerBarContainerView.h>
 #import <YouTubeHeader/YTPlayerBarController.h>
+#import <YouTubeHeader/YTPlayerBarController.h>
 #import "Headers.h"
+#import <YouTubeHeader/_ASCollectionViewCell.h>
+#import <YouTubeHeader/_ASDisplayView.h>
+#import <YouTubeHeader/ASCollectionView.h>
+#import <YouTubeHeader/NSArray+YouTube.h>
+#import <YouTubeHeader/ELMCellNode.h>
+#import <YouTubeHeader/ELMContainerNode.h>
+#import <YouTubeHeader/ELMNodeController.h>
+#import <YouTubeHeader/ELMNodeFactory.h>
+#import <YouTubeHeader/ELMTextNode.h>
+#import <YouTubeHeader/UIView+AsyncDisplayKit.h>
+#import <YouTubeHeader/YTAlertView.h>
+#import <YouTubeHeader/YTAppDelegate.h>
+#import <YouTubeHeader/YTAppViewController.h>
+#import <YouTubeHeader/YTAsyncCollectionView.h>
+#import <YouTubeHeader/YTColorPalette.h>
+#import <YouTubeHeader/YTELMView.h>
+#import <YouTubeHeader/YTFullscreenEngagementActionBarButtonRenderer.h>
+#import <YouTubeHeader/YTFullscreenEngagementActionBarButtonView.h>
+#import <YouTubeHeader/YTIButtonSupportedRenderers.h>
+#import <YouTubeHeader/YTIFormattedString.h>
+#import <YouTubeHeader/YTILikeButtonRenderer.h>
+#import <YouTubeHeader/YTIToggleButtonRenderer.h>
+#import <YouTubeHeader/YTPageStyleController.h>
+#import <YouTubeHeader/YTPlayerViewController.h>
+#import <YouTubeHeader/YTQTMButton.h>
+#import <YouTubeHeader/YTReelElementAsyncComponentView.h>
+#import <YouTubeHeader/YTReelModel.h>
+#import <YouTubeHeader/YTReelWatchLikesController.h>
+#import <YouTubeHeader/YTReelWatchPlaybackOverlayView.h>
+#import <YouTubeHeader/YTRollingNumberNode.h>
+#import <YouTubeHeader/YTRollingNumberView.h>
+#import <YouTubeHeader/YTShortsPlayerViewController.h>
+#import <YouTubeHeader/YTWatchController.h>
+
 
 // Navigation Bar
 
@@ -127,7 +162,7 @@
 - (void)layoutSubviews {
     %orig;
     if ([self.accessibilityIdentifier isEqualToString:@"id.reel_remix_button"]) {
-		[self removeFromSuperview];
+				[self removeFromSuperview];
         self.hidden = YES;
     }
 }
@@ -153,6 +188,43 @@
 }
 
 %end
+
+%hook ASCollectionView
+
+- (id)nodeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    id node = %orig;
+
+    // 1. Identify if we are in the Player's Action Bar (the row under the video)
+    if ([self.accessibilityIdentifier isEqualToString:@"id.video.scrollable_action_bar"]) {
+        
+        // 2. Get the children nodes (the buttons)
+        // Note: ELMCellNode usually wraps the buttons in a yogaChildren array
+        NSArray *buttons = [node yogaChildren]; 
+
+        // 3. Loop through and hide based on ID
+        for (id buttonNode in buttons) {
+            NSString *btnID = [buttonNode accessibilityIdentifier];
+
+            if ([btnID isEqualToString:@"id.video.share.button"] && IS_ENABLED(HideShareButton)) {
+                // Collapse the node so it takes up 0 space
+                // This is better than 'hidden = YES' because it removes the gap
+                [[buttonNode style] setWidth:ASDimensionMake(0)];
+                [[buttonNode style] setHeight:ASDimensionMake(0)];
+                [buttonNode setHidden:YES];
+            }
+            
+            if ([btnID isEqualToString:@"id.ui.add_to.offline.button"] && IS_ENABLED(HideDownloadButton)) {
+                [[buttonNode style] setWidth:ASDimensionMake(0)];
+								 [[buttonNode style] setHeight:ASDimensionMake(0)];
+                [buttonNode setHidden:YES];
+            }
+        }
+    }
+    return node;
+}
+%end
+
+
 
 %hook YTSearchViewController
 - (void)viewDidLoad {
