@@ -170,6 +170,8 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
                 [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
+                NSString *cacheDescriptionUpdate = [NSString stringWithFormat:@"%@", GetCacheSize()];
+                [cell setTitleDescription:cacheDescriptionUpdate];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[%c(YTToastResponderEvent) eventWithMessage:LOC(@"DONE") firstResponder:[self parentResponder]] send];
                 });
