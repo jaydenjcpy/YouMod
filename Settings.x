@@ -161,7 +161,6 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
         }];
     [sectionItems addObject:cache];
 
-    // NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
     YTSettingsSectionItem *clearCache = [YTSettingsSectionItemClass itemWithTitle:LOC(@"CLEARCACHE")
         titleDescription:GetCacheSize()
         accessibilityIdentifier:nil
@@ -170,7 +169,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
                 [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
-                // [self updateYouModSectionWithEntry:nil];
+                [self updateYouModSectionWithEntry:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[%c(YTToastResponderEvent) eventWithMessage:LOC(@"DONE") firstResponder:[self parentResponder]] send];
                 });
