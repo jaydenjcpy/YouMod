@@ -27,6 +27,20 @@ NSBundle *YouModBundle() {
     return bundle;
 }
 
+static NSString *GetCacheSize() { // YTLite - @dayanch96
+    NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+    NSArray *filesArray = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:cachePath error:nil];
+    unsigned long long int folderSize = 0;
+    for (NSString *fileName in filesArray) {
+        NSString *filePath = [cachePath stringByAppendingPathComponent:fileName];
+        NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
+        folderSize += [fileAttributes fileSize];
+    }
+    NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
+    formatter.countStyle = NSByteCountFormatterCountStyleFile;
+    return [formatter stringFromByteCount:folderSize];
+}
+
 // Settings Search Bar
 %hook YTSettingsViewController
 - (void)loadWithModel:(id)model fromView:(UIView *)view {
@@ -137,6 +151,47 @@ NSBundle *YouModBundle() {
     [sectionItems addObject:sourceCodes];
 
     // Section 1
+    // Cache
+    YTSettingsSectionItem *cache = [YTSettingsSectionItemClass itemWithTitle:nil
+        titleDescription:LOC(@"CACHE")
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            return NO;
+        }];
+    [sectionItems addObject:cache];
+
+    NSString *cacheDescription = [NSString stringWithFormat:@"%@", GetCacheSize()];
+    YTSettingsSectionItem *clearCache = [YTSettingsSectionItemClass itemWithTitle:LOC(@"CLEARCACHE")
+        titleDescription:cacheDescription
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+                [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[%c(YTToastResponderEvent) eventWithMessage:LOC(@"DONE") firstResponder:[self parentResponder]] send];
+                });
+            });
+            return YES;
+        }
+    ];
+    [sectionItems addObject:clearCache];
+
+    // Auto clear cache
+    YTSettingsSectionItem *autocache = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"AUTO_CLEARCACHE")
+        titleDescription:LOC(@"AUTO_CLEARCACHE_DESC")
+        accessibilityIdentifier:nil
+        switchOn:IS_ENABLED(AutoClearCache)
+        switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:AutoClearCache];
+            return YES;
+        }
+        settingItemId:0];
+    [sectionItems addObject:autocache];
+
+    // Section 2
     // Appearance
     YTSettingsSectionItem *apper = [YTSettingsSectionItemClass itemWithTitle:nil
         titleDescription:LOC(@"APPEARANCE")
@@ -171,7 +226,7 @@ NSBundle *YouModBundle() {
     [sectionItems addObject:github];
     */ 
 
-    // Section 2
+    // Section 3
     // Navigation bar
     YTSettingsSectionItem *navbar = [YTSettingsSectionItemClass itemWithTitle:nil
         titleDescription:LOC(@"NAVBAR")
@@ -280,7 +335,7 @@ NSBundle *YouModBundle() {
         settingItemId:0];
     [sectionItems addObject:hideisponsorblock];
 
-    // Section 3
+    // Section 4
     // Feed
     YTSettingsSectionItem *feed = [YTSettingsSectionItemClass itemWithTitle:nil
         titleDescription:LOC(@"FEED")
@@ -339,7 +394,7 @@ NSBundle *YouModBundle() {
         settingItemId:0];
     [sectionItems addObject:hidesearchhis];
 
-    // Section 4
+    // Section 5
     // Player
     YTSettingsSectionItem *player = [YTSettingsSectionItemClass itemWithTitle:nil
         titleDescription:LOC(@"PLAYER")
@@ -688,7 +743,7 @@ NSBundle *YouModBundle() {
     [sectionItems addObject:hidedownloadbutton];
     */
 
-    // Section 5
+    // Section 6
     // Shorts
     YTSettingsSectionItem *shorts = [YTSettingsSectionItemClass itemWithTitle:nil
         titleDescription:LOC(@"SHORTS")
@@ -867,7 +922,7 @@ NSBundle *YouModBundle() {
         settingItemId:0];
     [sectionItems addObject:showshortsseekbar];
 
-    // Section 6
+    // Section 7
     // Tab bar
     YTSettingsSectionItem *tabbar = [YTSettingsSectionItemClass itemWithTitle:nil
         titleDescription:LOC(@"TABBAR")
@@ -963,7 +1018,7 @@ NSBundle *YouModBundle() {
         settingItemId:0];
     [sectionItems addObject:hidesubscripttab];
 
-    // Section 7
+    // Section 8
     // Miscellaneous
     YTSettingsSectionItem *miscell = [YTSettingsSectionItemClass itemWithTitle:nil
         titleDescription:LOC(@"MISCELLANEOUS")
@@ -1092,6 +1147,7 @@ NSBundle *YouModBundle() {
 
 %ctor {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
+        AutoClearCache: @YES,
         YTPremiumLogo: @YES,
         HideCreateButton: @YES,
         HideCastButtonNav: @YES,

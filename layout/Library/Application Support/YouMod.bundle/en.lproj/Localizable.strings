@@ -5,6 +5,12 @@
 "SOURCE_CODES" = "Source codes";
 "SOURCE_CODES_DESC" = "Take a look at the codes!";
 
+"CACHE" = "Cache";
+"CLEARCACHE" = "Clear cache";
+"DONE" = "Done";
+"AUTO_CLEARCACHE" = "Auto clear cache";
+"AUTO_CLEARCACHE_DESC" = "Automatically clears the app cache on startup.";
+
 "APPEARANCE" = "Appearance";
 "OLED_KEYBOARD" = "OLED Keyboard";
 "OLED_KEYBOARD_DESC" = "Make the keyboard uses a pure black (OLED) color.";

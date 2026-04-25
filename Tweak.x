@@ -1258,6 +1258,27 @@ BOOL isTabSelected = NO;
 %end
 %end
 
+// Auto clear cache
+%hook YTAppDelegate
+%new
+- (void)YouModAutoClearCache {
+    NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+    [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    BOOL result = %orig;
+    if (IS_ENABLED(AutoClearCache)) {
+        // Clear cache on app launch
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self YouModAutoClearCache];
+        });
+    }
+    return result;
+}
+
+%end
+
 %ctor {
     YTILikeResponseClass = %c(YTILikeResponse);
     YTIDislikeResponseClass = %c(YTIDislikeResponse);
