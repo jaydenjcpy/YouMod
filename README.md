@@ -1,5 +1,5 @@
 # YouMod
-**Progress: Around 80% of the features have been implemented.** (Not counting from feature requests)
+**Progress: Around 90% of the features have been implemented.** (Not counting from feature requests)
 
 A tweak that's try to recreate features like in YTLite as much as possible. Contributors are welcome! ^^
 

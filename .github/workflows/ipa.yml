@@ -26,8 +26,8 @@ on:
         required: false
         type: boolean
 
-      ytvid:
-        description: "Integrate YTVideoErrorAlert"
+      ytshare:
+        description: "Integrate youtube-native-share"
         default: true
         required: false
         type: boolean
@@ -173,14 +173,11 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
 
       - name: Clone youtube-native-share
+        if: ${{ inputs.ytshare }}
         run: git clone --quiet --depth=1 https://github.com/jkhsjdhjs/youtube-native-share.git
 
       - name: Clone iSponsorBlock
         run: git clone --quiet --depth=1 https://github.com/Galactic-Dev/iSponsorBlock.git
-
-      - name: Clone YTVideoErrorAlert
-        if: ${{ inputs.ytvid }}
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoErrorAlert.git
 
       - name: Clone VolumeBoostYT
         if: ${{ inputs.volboost }}
@@ -310,18 +307,12 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/isponsorblock.deb
 
       - name: Build youtube-native-share
+        if: ${{ inputs.ytshare }}
         run: |
           cd youtube-native-share
           git clone --quiet --depth=1 https://github.com/protocolbuffers/protobuf.git
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless ARCHS=arm64
           mv packages/*.deb ${{ github.workspace }}/ytnativeshare.deb
-
-      - name: Build YTVideoErrorAlert
-        if: ${{ inputs.ytvid }}
-        run: |
-          cd YTVideoErrorAlert
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytvideoerror.deb
 
       - name: Build VolumeBoostYT
         if: ${{ inputs.volboost }}
