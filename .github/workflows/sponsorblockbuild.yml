@@ -117,6 +117,9 @@ jobs:
       - name: Clone YouMod
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouMod.git
 
+      - name: Clone iSponsorBlock
+        run: git clone --quiet --depth=1 https://github.com/Galactic-Dev/iSponsorBlock
+
       - name: Clone YouPiP
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
     
@@ -127,7 +130,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
 
       - name: Clone YouGroupSettings
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouGroupSettings.git
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
            
       - name: Clone YTVideoOverlay
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
@@ -176,9 +179,6 @@ jobs:
         if: ${{ inputs.ytshare }}
         run: git clone --quiet --depth=1 https://github.com/jkhsjdhjs/youtube-native-share.git
 
-      - name: Clone iSponsorBlock
-        run: git clone --quiet --depth=1 https://github.com/Galactic-Dev/iSponsorBlock.git
-
       - name: Clone VolumeBoostYT
         if: ${{ inputs.volboost }}
         run: git clone --quiet --depth=1 https://github.com/VasirakCalgux/VolumeBoostYT.git
@@ -225,6 +225,14 @@ jobs:
           cd YTABConfig
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytabconfig.deb
+
+          
+      - name: Build iSponsorBlock
+        run: |
+          cd iSponsorBlock
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless TARGET=iphone:clang:latest:13.0
+          mv packages/*.deb ${{ github.workspace }}/isponsorblock.deb
+
 
       - name: Build YouQuality
         run: |
@@ -299,12 +307,6 @@ jobs:
           cd YouGetCaption
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ygc.deb
-
-      - name: Build iSponsorBlock
-        run: |
-          cd iSponsorBlock
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless TARGET=iphone:clang:latest:13.0
-          mv packages/*.deb ${{ github.workspace }}/isponsorblock.deb
 
       - name: Build youtube-native-share
         if: ${{ inputs.ytshare }}
