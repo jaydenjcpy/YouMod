@@ -149,6 +149,10 @@
 
 "TABBAR" = "Fanebjælke";
 "DEFAULT_TAB" = "Standard fane";
+"DEFAULT_TAB_DESC" = "Du kan vælge, hvilken fane der åbnes, når appen starter.";
+"HOME_NAME" = "Hjem";
+"SUBSCRIPT_NAME" = "Abonnementer";
+"LIB_NAME" = "Bibliotek (Dig)";
 "HIDE_TAB_INDI" = "Skjul indikatorer";
 "HIDE_TAB_INDI_DESC" = "Skjul faneindikatorer.";
 "HIDE_TAB_LABELS" = "Skjul etiketter";

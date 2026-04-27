@@ -149,6 +149,10 @@
 
 "TABBAR" = "टैब बार";
 "DEFAULT_TAB" = "डिफ़ॉल्ट टैब";
+"DEFAULT_TAB_DESC" = "आप चुन सकते हैं कि ऐप खोलते समय कौन सा टैब खुले।";
+"HOME_NAME" = "होम";
+"SUBSCRIPT_NAME" = "सदस्यताएँ";
+"LIB_NAME" = "लाइब्रेरी (आप)";
 "HIDE_TAB_INDI" = "इंडिकेटर छिपाएँ";
 "HIDE_TAB_INDI_DESC" = "छिपाएँ।";
 "HIDE_TAB_LABELS" = "लेबल छिपाएँ";

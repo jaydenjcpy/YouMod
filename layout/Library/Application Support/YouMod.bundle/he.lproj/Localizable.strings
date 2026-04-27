@@ -149,6 +149,10 @@
 
 "TABBAR" = "סרגל לשוניות";
 "DEFAULT_TAB" = "לשונית ברירת מחדל";
+"DEFAULT_TAB_DESC" = "ניתן לבחור איזו לשונית תיפתח בעת פתיחת האפליקציה.";
+"HOME_NAME" = "דף הבית";
+"SUBSCRIPT_NAME" = "מנויים";
+"LIB_NAME" = "ספרייה (אתה)";
 "HIDE_TAB_INDI" = "הסתר אינדיקטורים";
 "HIDE_TAB_INDI_DESC" = "מסתיר אינדיקטורים.";
 "HIDE_TAB_LABELS" = "הסתר שמות";

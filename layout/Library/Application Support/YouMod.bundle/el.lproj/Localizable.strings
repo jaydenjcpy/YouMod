@@ -149,6 +149,10 @@
 
 "TABBAR" = "Γραμμή καρτελών";
 "DEFAULT_TAB" = "Προεπιλεγμένη καρτέλα";
+"DEFAULT_TAB_DESC" = "Μπορείτε να επιλέξετε την καρτέλα που θα ανοίγει κατά την εκκίνηση της εφαρμογής.";
+"HOME_NAME" = "Αρχική";
+"SUBSCRIPT_NAME" = "Συνδρομές";
+"LIB_NAME" = "Βιβλιοθήκη (Εσείς)";
 "HIDE_TAB_INDI" = "Απόκρυψη δεικτών";
 "HIDE_TAB_INDI_DESC" = "Απόκρυψη indicators.";
 "HIDE_TAB_LABELS" = "Απόκρυψη labels";

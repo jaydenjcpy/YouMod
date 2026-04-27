@@ -149,6 +149,10 @@
 
 "TABBAR" = "Flikfält";
 "DEFAULT_TAB" = "Standardflik";
+"DEFAULT_TAB_DESC" = "Du kan välja vilken flik som ska öppnas när appen startas.";
+"HOME_NAME" = "Hem";
+"SUBSCRIPT_NAME" = "Prenumerationer";
+"LIB_NAME" = "Bibliotek (Du)";
 "HIDE_TAB_INDI" = "Dölj indikatorer";
 "HIDE_TAB_INDI_DESC" = "Döljer.";
 "HIDE_TAB_LABELS" = "Dölj etiketter";

@@ -149,6 +149,10 @@
 
 "TABBAR" = "Tab bar";
 "DEFAULT_TAB" = "Default startup tab";
+"DEFAULT_TAB_DESC" = "You can select the tab you want to open when opening the app.";
+"HOME_NAME" = "Home";
+"SUBSCRIPT_NAME" = "Subscriptions";
+"LIB_NAME" = "Library (You)";
 "HIDE_TAB_INDI" = "Hide tab indicators";
 "HIDE_TAB_INDI_DESC" = "Hide all tab indicators in the tab bar.";
 "HIDE_TAB_LABELS" = "Hide tab labels";

@@ -149,6 +149,10 @@
 
 "TABBAR" = "Barra de abas";
 "DEFAULT_TAB" = "Aba padrão";
+"DEFAULT_TAB_DESC" = "Você pode selecionar a aba que deseja abrir ao iniciar o aplicativo.";
+"HOME_NAME" = "Início";
+"SUBSCRIPT_NAME" = "Inscrições";
+"LIB_NAME" = "Biblioteca (Você)";
 "HIDE_TAB_INDI" = "Ocultar indicadores";
 "HIDE_TAB_INDI_DESC" = "Oculta.";
 "HIDE_TAB_LABELS" = "Ocultar rótulos";

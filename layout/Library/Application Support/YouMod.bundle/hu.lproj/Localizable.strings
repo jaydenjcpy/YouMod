@@ -149,6 +149,10 @@
 
 "TABBAR" = "Fülsáv";
 "DEFAULT_TAB" = "Alapértelmezett fül";
+"DEFAULT_TAB_DESC" = "Kiválaszthatod, melyik fül nyíljon meg az alkalmazás indításakor.";
+"HOME_NAME" = "Kezdőlap";
+"SUBSCRIPT_NAME" = "Feliratkozások";
+"LIB_NAME" = "Könyvtár (Te)";
 "HIDE_TAB_INDI" = "Jelzők elrejtése";
 "HIDE_TAB_INDI_DESC" = "Elrejti.";
 "HIDE_TAB_LABELS" = "Címkék elrejtése";

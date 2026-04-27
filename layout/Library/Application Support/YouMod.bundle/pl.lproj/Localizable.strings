@@ -149,6 +149,13 @@
 
 "TABBAR" = "Pasek kart";
 "DEFAULT_TAB" = "Domyślna karta";
+"DEFAULT_TAB_DESC" = "Możesz wybrać kartę, która ma się otwierać przy uruchamianiu aplikacji.";
+"HOME_NAME" = "Strona główna";
+"SUBSCRIPT_NAME" = "Subskrypcje";
+"LIB_NAME" = "Biblioteka (Ty)";"DEFAULT_TAB_DESC" = "Możesz wybrać kartę, która ma się otwierać przy uruchamianiu aplikacji.";
+"HOME" = "Strona główna";
+"SUBSCRIPT_NAME" = "Subskrypcje";
+"LIB_NAME" = "Biblioteka (Ty)";
 "HIDE_TAB_INDI" = "Ukryj wskaźniki";
 "HIDE_TAB_INDI_DESC" = "Ukryj.";
 "HIDE_TAB_LABELS" = "Ukryj etykiety";

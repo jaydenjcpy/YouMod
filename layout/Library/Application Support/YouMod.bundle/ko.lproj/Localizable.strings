@@ -149,6 +149,10 @@
 
 "TABBAR" = "탭 바";
 "DEFAULT_TAB" = "기본 탭";
+"DEFAULT_TAB_DESC" = "앱을 열 때 표시할 탭을 선택할 수 있습니다.";
+"HOME_NAME" = "홈";
+"SUBSCRIPT_NAME" = "구독";
+"LIB_NAME" = "라이브러리 (나)";
 "HIDE_TAB_INDI" = "표시기 숨기기";
 "HIDE_TAB_INDI_DESC" = "숨김.";
 "HIDE_TAB_LABELS" = "라벨 숨기기";

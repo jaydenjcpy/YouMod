@@ -149,6 +149,10 @@
 
 "TABBAR" = "标签栏";
 "DEFAULT_TAB" = "默认标签页";
+"DEFAULT_TAB_DESC" = "你可以选择应用启动时打开的标签页。";
+"HOME_NAME" = "首页";
+"SUBSCRIPT_NAME" = "订阅";
+"LIB_NAME" = "库（你）";
 "HIDE_TAB_INDI" = "隐藏指示器";
 "HIDE_TAB_INDI_DESC" = "隐藏所有标签指示器。";
 "HIDE_TAB_LABELS" = "隐藏标签文字";

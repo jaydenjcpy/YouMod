@@ -149,6 +149,10 @@
 
 "TABBAR" = "Tab-Leiste";
 "DEFAULT_TAB" = "Standard-Tab";
+"DEFAULT_TAB_DESC" = "Sie können auswählen, welche Registerkarte beim Öffnen der App gestartet wird.";
+"HOME_NAME" = "Startseite";
+"SUBSCRIPT_NAME" = "Abos";
+"LIB_NAME" = "Mediathek (Du)";
 "HIDE_TAB_INDI" = "Indikatoren ausblenden";
 "HIDE_TAB_INDI_DESC" = "Blendet Tab-Indikatoren aus.";
 "HIDE_TAB_LABELS" = "Beschriftungen ausblenden";

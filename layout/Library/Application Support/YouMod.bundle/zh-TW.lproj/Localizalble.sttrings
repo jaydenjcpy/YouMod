@@ -149,6 +149,10 @@
 
 "TABBAR" = "分頁列";
 "DEFAULT_TAB" = "預設分頁";
+"DEFAULT_TAB_DESC" = "你可以選擇啟動應用時要開啟的分頁。";
+"HOME_NAME" = "首頁";
+"SUBSCRIPT_NAME" = "訂閱";
+"LIB_NAME" = "資料庫（你）";
 "HIDE_TAB_INDI" = "隱藏指示器";
 "HIDE_TAB_INDI_DESC" = "隱藏所有分頁指示器。";
 "HIDE_TAB_LABELS" = "隱藏標籤文字";

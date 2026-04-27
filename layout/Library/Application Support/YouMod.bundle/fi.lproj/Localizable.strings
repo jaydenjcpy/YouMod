@@ -149,6 +149,10 @@
 
 "TABBAR" = "Välilehtipalkki";
 "DEFAULT_TAB" = "Oletusvälilehti";
+"DEFAULT_TAB_DESC" = "Voit valita, mikä välilehti avataan sovelluksen käynnistyessä.";
+"HOME_NAME" = "Etusivu";
+"SUBSCRIPT_NAME" = "Tilaukset";
+"LIB_NAME" = "Kirjasto (Sinä)";
 "HIDE_TAB_INDI" = "Piilata indikaattorit";
 "HIDE_TAB_INDI_DESC" = "Piilottaa indikaattorit.";
 "HIDE_TAB_LABELS" = "Piilata nimet";

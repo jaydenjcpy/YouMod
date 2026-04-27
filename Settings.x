@@ -41,19 +41,6 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
     return [formatter stringFromByteCount:folderSize];
 }
 
-// Default tab icon helper
-static UIImage *getIcon(int num) {
-    YTIIcon *icon = [%c(YTIIcon) new];
-    icon.iconType = num;
-    if ([icon respondsToSelector:@selector(iconImageWithColor:)]) {
-        return [icon iconImageWithColor:[%c(YTColor) white1]];
-    }
-    if ([icon respondsToSelector:@selector(iconImageWithSelected:)]) {
-        return [icon iconImageWithSelected:NO];
-    }
-    return nil;
-}
-
 // Settings Search Bar
 %hook YTSettingsViewController
 - (void)loadWithModel:(id)model fromView:(UIView *)view {
@@ -111,7 +98,7 @@ static UIImage *getIcon(int num) {
 
     // Tweak Version (at the top)
     // Thanks to the original codes from YTweaks by fosterbarnes - https://github.com/fosterbarnes/YTweaks/blob/e921591a89b87256a2b37c4788bd99282f70d9c2/Settings.x
-    YTSettingsSectionItem *tweakVersion = [YTSettingsSectionItemClass itemWithTitle:@"YouMod v1.0.0"
+    YTSettingsSectionItem *tweakVersion = [YTSettingsSectionItemClass itemWithTitle:@"YouMod v1.0.1"
         titleDescription:nil
         accessibilityIdentifier:nil
         detailTextBlock:nil
@@ -1013,12 +1000,48 @@ static UIImage *getIcon(int num) {
 
     // Default tab
     YTSettingsSectionItem *defaulttab = [YTSettingsSectionItemClass itemWithTitle:LOC(@"DEFAULT_TAB")
-        titleDescription:nil
-        accessibilityIdentifier:@"YouModDefaultStartupTabBar"
-        detailTextBlock:nil
-        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            return NO;
-        }];
+    titleDescription:LOC(@"DEFAULT_TAB_DESC")
+    accessibilityIdentifier:nil
+    detailTextBlock:^NSString *() {
+        switch (INTFORVAL(DefaultTab)) {
+            case 1:
+                return LOC(@"Shorts");
+            case 2:
+                return LOC(@"SUBSCRIPT_NAME");
+            case 3:
+                return LOC(@"LIB_NAME");
+            case 0:
+            default:
+                return LOC(@"HOME_NAME");
+        }
+    }
+    selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+        NSArray <YTSettingsSectionItem *> *rows = @[
+            [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"HOME_NAME") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:DefaultTab];
+                [settingsViewController reloadData];
+                return YES;
+            }],
+            [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"Shorts") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:DefaultTab];
+                [settingsViewController reloadData];
+                return YES;
+            }],
+            [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"SUBSCRIPT_NAME") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:DefaultTab];
+                [settingsViewController reloadData];
+                return YES;
+            }],
+            [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"LIB_NAME") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:DefaultTab];
+                [settingsViewController reloadData];
+                return YES;
+            }]
+        ];
+        YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"DEFAULT_TAB") pickerSectionTitle:nil rows:rows selectedItemIndex:INTFORVAL(DefaultTab) parentResponder:[self parentResponder]];
+        [settingsViewController pushViewController:picker];
+        return YES;
+    }];
     [sectionItems addObject:defaulttab];
 
     // Hide tab indicators
@@ -1226,61 +1249,6 @@ static UIImage *getIcon(int num) {
         return;
     }
     %orig;
-}
-
-%end
-
-%hook YTSettingsCell
-
-- (void)layoutSubviews {
-    %orig;
-    if ([self.accessibilityIdentifier isEqualToString:@"YouModDefaultStartupTabBar"]) {
-        UISegmentedControl *segment = [self.contentView viewWithTag:888852];
-        if (!segment) {
-            // Home, Shorts, Subscriptions, Library icon numbers
-            NSArray *iconList = @[@(65), @(769), @(66), @(61)]; 
-            
-            segment = [[UISegmentedControl alloc] initWithItems:@[@"", @"", @"", @""]];
-            segment.tag = 888852;
-
-            // Add icons from YTIIcon
-            for (int i = 0; i < iconList.count; i++) {
-                UIImage *iconImage = getIcon([iconList[i] intValue]);
-                if (iconImage) {
-                    [segment setImage:iconImage forSegmentAtIndex:i];
-                }
-            }
-
-            segment.selectedSegmentIndex = [[NSUserDefaults standardUserDefaults] integerForKey:DefaultTab];
-            [segment addTarget:self action:@selector(YouModStartupTabChanged:) forControlEvents:UIControlEventValueChanged];
-            
-            segment.backgroundColor = [UIColor colorWithRed:0.13 green:0.13 blue:0.13 alpha:1.0];
-            // A slightly lighter grey for the active selection
-            segment.selectedSegmentTintColor = [UIColor colorWithRed:0.25 green:0.25 blue:0.25 alpha:1.0];
-            segment.tintColor = [UIColor whiteColor];
-
-            // Add a slight corner radius
-            segment.layer.cornerRadius = 8.0;
-            segment.clipsToBounds = YES;
-            
-            segment.translatesAutoresizingMaskIntoConstraints = NO;
-            [self.contentView addSubview:segment];
-            
-            [NSLayoutConstraint activateConstraints:@[
-                [segment.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:16],
-                [segment.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:-16],
-                [segment.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-12],
-                [segment.heightAnchor constraintEqualToConstant:36]
-            ]];
-        }
-        return;
-    }
-}
-
-%new
-- (void)YouModStartupTabChanged:(UISegmentedControl *)sender {
-    [[NSUserDefaults standardUserDefaults] setInteger:sender.selectedSegmentIndex forKey:DefaultTab];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 %end

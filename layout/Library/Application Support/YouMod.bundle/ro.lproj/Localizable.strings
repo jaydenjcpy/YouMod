@@ -149,6 +149,10 @@
 
 "TABBAR" = "Bară de file";
 "DEFAULT_TAB" = "Filă implicită";
+"DEFAULT_TAB_DESC" = "Poți selecta fila care se va deschide la pornirea aplicației.";
+"HOME_NAME" = "Acasă";
+"SUBSCRIPT_NAME" = "Abonamente";
+"LIB_NAME" = "Bibliotecă (Tu)";
 "HIDE_TAB_INDI" = "Ascunde indicatorii";
 "HIDE_TAB_INDI_DESC" = "Ascunde.";
 "HIDE_TAB_LABELS" = "Ascunde etichetele";

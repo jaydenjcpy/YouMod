@@ -149,6 +149,10 @@
 
 "TABBAR" = "Bar tab";
 "DEFAULT_TAB" = "Tab lalai";
+"DEFAULT_TAB_DESC" = "Anda boleh memilih tab yang dibuka apabila aplikasi dimulakan.";
+"HOME_NAME" = "Laman Utama";
+"SUBSCRIPT_NAME" = "Langganan";
+"LIB_NAME" = "Perpustakaan (Anda)";
 "HIDE_TAB_INDI" = "Sembunyikan indikator";
 "HIDE_TAB_INDI_DESC" = "Sembunyikan.";
 "HIDE_TAB_LABELS" = "Sembunyikan label";

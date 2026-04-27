@@ -149,6 +149,10 @@
 
 "TABBAR" = "Thanh tab";
 "DEFAULT_TAB" = "Tab mặc định";
+"DEFAULT_TAB_DESC" = "Bạn có thể chọn tab sẽ mở khi khởi động ứng dụng.";
+"HOME_NAME" = "Trang chủ";
+"SUBSCRIPT_NAME" = "Kênh đăng ký";
+"LIB_NAME" = "Thư viện (Bạn)";
 "HIDE_TAB_INDI" = "Ẩn chỉ báo";
 "HIDE_TAB_INDI_DESC" = "Ẩn.";
 "HIDE_TAB_LABELS" = "Ẩn nhãn";

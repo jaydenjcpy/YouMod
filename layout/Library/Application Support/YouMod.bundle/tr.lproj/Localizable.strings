@@ -149,6 +149,10 @@
 
 "TABBAR" = "Sekme çubuğu";
 "DEFAULT_TAB" = "Varsayılan sekme";
+"DEFAULT_TAB_DESC" = "Uygulama açıldığında hangi sekmenin açılacağını seçebilirsiniz.";
+"HOME_NAME" = "Ana Sayfa";
+"SUBSCRIPT_NAME" = "Abonelikler";
+"LIB_NAME" = "Kütüphane (Sen)";
 "HIDE_TAB_INDI" = "Göstergeleri gizle";
 "HIDE_TAB_INDI_DESC" = "Gizler.";
 "HIDE_TAB_LABELS" = "Etiketleri gizle";

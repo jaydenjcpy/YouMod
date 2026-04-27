@@ -149,6 +149,10 @@
 
 "TABBAR" = "Barra de separadores";
 "DEFAULT_TAB" = "Separador padrão";
+"DEFAULT_TAB_DESC" = "Pode selecionar o separador que deseja abrir ao iniciar a aplicação.";
+"HOME_NAME" = "Início";
+"SUBSCRIPT_NAME" = "Subscrições";
+"LIB_NAME" = "Biblioteca (Você)";
 "HIDE_TAB_INDI" = "Ocultar indicadores";
 "HIDE_TAB_INDI_DESC" = "Oculta.";
 "HIDE_TAB_LABELS" = "Ocultar etiquetas";
