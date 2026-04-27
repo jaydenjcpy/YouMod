@@ -31,7 +31,7 @@
 
 "APPEARANCE" = "Appearance";
 "OLED_THEME" = "OLED theme";
-"OLED_THEME_DESC" = "Make the app uses a pure black (OLED) color for dark theme.\nKnown issue: The background color in the home feed might not change due to some bugs and limitations.";
+"OLED_THEME_DESC" = "Make the app uses a pure black (OLED) color for dark theme.\nKnown issue: The background color in some pages might not change due to some bugs and limitations.";
 "OLED_KEYBOARD" = "OLED keyboard";
 "OLED_KEYBOARD_DESC" = "Make the keyboard uses a pure black (OLED) color for dark theme.";
 
@@ -48,8 +48,6 @@
 "HIDE_VOICE_SEARCH_BUTTON_DESC" = "Hide voice search button from the navigation bar.";
 "HIDE_CAST_BUTTON_NAVBAR" = "Hide cast button";
 "HIDE_CAST_BUTTON_NAVBAR_DESC" = "Hide cast button from the navigation bar.";
-"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock button";
-"HIDE_ISPONSORBLOCK_DESC" = "Hide iSponsorBlock button from the navigation bar.";
 
 "FEED" = "Feed";
 "HIDE_SUBBAR" = "Hide subbar";
