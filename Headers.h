@@ -130,7 +130,6 @@
 @interface YTRightNavigationButtons (YouMod)
 @property (nonatomic, strong) YTQTMButton *notificationButton;
 @property (nonatomic, strong) YTQTMButton *searchButton;
-@property (nonatomic, strong) YTQTMButton *sponsorBlockButton;
 @end
 
 @interface YTNavigationBarTitleView : UIView
