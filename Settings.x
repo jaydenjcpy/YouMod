@@ -98,7 +98,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
 
     // Tweak Version (at the top)
     // Thanks to the original codes from YTweaks by fosterbarnes - https://github.com/fosterbarnes/YTweaks/blob/e921591a89b87256a2b37c4788bd99282f70d9c2/Settings.x
-    YTSettingsSectionItem *tweakVersion = [YTSettingsSectionItemClass itemWithTitle:@"YouMod v1.0.1"
+    YTSettingsSectionItem *tweakVersion = [YTSettingsSectionItemClass itemWithTitle:@"YouMod v1.0.2"
         titleDescription:nil
         accessibilityIdentifier:nil
         detailTextBlock:nil
@@ -698,6 +698,18 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
         settingItemId:0];
     [sectionItems addObject:autofullscreen];
 
+    // Portrait fullscreen
+    YTSettingsSectionItem *portfullscreen = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"PORTRAIT_FULLSCREEN")
+        titleDescription:LOC(@"PORTRAIT_FULLSCREEN_DESC")
+        accessibilityIdentifier:nil
+        switchOn:IS_ENABLED(PortFull)
+        switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:PortFull];
+            return YES;
+        }
+        settingItemId:0];
+    [sectionItems addObject:portfullscreen];
+
     // Use old video quality picker
     YTSettingsSectionItem *oldqualitypicker = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"OLD_QUALITY_PICKER")
         titleDescription:LOC(@"OLD_QUALITY_PICKER_DESC")
@@ -709,6 +721,18 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
         }
         settingItemId:0];
     [sectionItems addObject:oldqualitypicker];
+
+    // Extra speed
+    YTSettingsSectionItem *extraspeed = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"EXTRA_SPEED")
+        titleDescription:LOC(@"EXTRA_SPEED_DESC")
+        accessibilityIdentifier:nil
+        switchOn:IS_ENABLED(ExtraSpeed)
+        switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:ExtraSpeed];
+            return YES;
+        }
+        settingItemId:0];
+    [sectionItems addObject:extraspeed];
 
     // Hide like button
     YTSettingsSectionItem *hidelikebutton = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_LIKE_BUTTON")
@@ -1127,6 +1151,18 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
         }];
     [sectionItems addObject:miscell];
 
+    // Background playback
+    YTSettingsSectionItem *background = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"BACKGROUND_PLAYBACK")
+        titleDescription:LOC(@"BACKGROUND_PLAYBACK_DESC")
+        accessibilityIdentifier:nil
+        switchOn:IS_ENABLED(BackgroundPlayback)
+        switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+            [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:BackgroundPlayback];
+            return YES;
+        }
+        settingItemId:0];
+    [sectionItems addObject:background];
+
     // Try to disables Shorts PiP
     YTSettingsSectionItem *shortsPiP = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLES_SHORTS_PIP")
         titleDescription:LOC(@"DISABLES_SHORTS_PIP_DESC")
@@ -1260,6 +1296,7 @@ static NSString *GetCacheSize() { // YTLite - @dayanch96
         HideCreateButton: @YES,
         HideCastButtonNav: @YES,
         HideCastButtonPlayer: @YES,
+        BackgroundPlayback: @YES,
     }];
     %init;
 }

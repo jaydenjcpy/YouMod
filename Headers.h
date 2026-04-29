@@ -24,6 +24,9 @@
 #import <YouTubeHeader/YTPlayerOverlayProvider.h>
 #import <YouTubeHeader/YTReelModel.h>
 #import <YouTubeHeader/YTAlertView.h>
+#import <YouTubeHeader/YTVarispeedSwitchController.h>
+#import <YouTubeHeader/YTVarispeedSwitchControllerImpl.h>
+#import <YouTubeHeader/YTVarispeedSwitchControllerOption.h>
 #import <dlfcn.h>
 
 // For Settings.x
@@ -78,7 +81,9 @@
 #define HideContentWarning @"YouModHideContentWarning"
 // #define HideRelateVideo @"YouModHideRelateVideoOnFinish"
 #define AutoFullScreen @"YouModAutoFullScreen"
+#define PortFull @"YouModPortraitFullscreen"
 #define OldQualityPicker @"YouModUseOldQualityPicker"
+#define ExtraSpeed @"YouModAddExtraSpeed"
 #define HideLikeButton @"YouModHideLikeButton"
 #define HideDisLikeButton @"YouModHideDisLikeButton"
 #define HideShareButton @"YouModHideShareButton"
@@ -110,6 +115,7 @@
 #define HideCreateButton @"YouModHideCreateButton"
 #define HideSubscriptTab @"YouModHideSubscriptionsTab"
 // Miscellaneous
+#define BackgroundPlayback @"YouModEnablesBackgroundPlayback"
 #define DisablesShortsPiP @"YouModTrytoDisablesShortsPiP"
 #define BlockUpgradeDialogs @"YouModBlockUpgradeDialogs"
 #define HideAreYouThereDialog @"YouModHideAreYouThereDialog"

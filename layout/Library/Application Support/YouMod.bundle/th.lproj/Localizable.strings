@@ -100,8 +100,12 @@
 "HIDE_CONTENT_WARNING_DESC" = "ข้ามคำเตือนเนื้อหาอัตโนมัติในบางวิดีโอ";
 "AUTO_FULLSCREEN" = "เต็มหน้าจออัตโนมัติ";
 "AUTO_FULLSCREEN_DESC" = "เข้าสู่โหมดเต็มหน้าจอโดยอัตโนมัติ";
+"PORTRAIT_FULLSCREEN" = "โหมดเต็มหน้าจอในแนวตั้ง";
+"PORTRAIT_FULLSCREEN_DESC" = "เปิดใช้งานโหมดเต็มหน้าจอในแนวตั้ง";
 "OLD_QUALITY_PICKER" = "ใช้ตัวเลือกคุณภาพแบบเก่า";
 "OLD_QUALITY_PICKER_DESC" = "ใช้ตัวเลือกคุณภาพแบบเก่าเพื่อลิสต์คุณภาพวิดีโอได้เร็วขึ้น";
+"EXTRA_SPEED" = "เพิ่มตัวเลือกความเร็ววิดีโอ";
+"EXTRA_SPEED_DESC" = "เพิ่มตัวเลือกความเร็ววิดีโอถึง 10x";
 "HIDE_LIKE_BUTTON" = "ซ่อนปุ่มถูกใจ";
 "HIDE_LIKE_BUTTON_DESC" = "ซ่อนปุ่มถูกใจใต้โอเวอร์เลย์วิดีโอ";
 "HIDE_DISLIKE_BUTTON" = "ซ่อนปุ่มไม่ถูกใจ";
@@ -167,6 +171,8 @@
 "HIDE_SUBSCRIPT_TAB_DESC" = "ซ่อนแท็บการติดตามในแท็บนำทาง";
 
 "MISCELLANEOUS" = "อื่นๆ";
+"BACKGROUND_PLAYBACK" = "เล่นภายในเบื้องหลัง";
+"BACKGROUND_PLAYBACK_DESC" = "เปิดใช้งานการเล่นวิดีโอภายในเบื้องหลัง";
 "DISABLES_SHORTS_PIP" = "ปิด PiP ของ Shorts";
 "DISABLES_SHORTS_PIP_DESC" = "พยายามปิด PiP ของ Shorts อาจไม่สามารถปิดได้ 100%";
 "BLOCK_UPGRADE_DIALOGS" = "บล็อกกล่องแจ้งเตือนอัปเดต";

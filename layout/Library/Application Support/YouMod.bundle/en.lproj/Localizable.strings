@@ -100,8 +100,12 @@
 "HIDE_CONTENT_WARNING_DESC" = "Automatically skip the sensitive content warning alert in some vidoes.";
 "AUTO_FULLSCREEN" = "Auto fullscreen";
 "AUTO_FULLSCREEN_DESC" = "Automatically enter fullscreen mode when starting video playback.";
+"PORTRAIT_FULLSCREEN" = "Portrait fullscren mode";
+"PORTRAIT_FULLSCREEN_DESC" = "Enables portrait fullscreen mode support.";
 "OLD_QUALITY_PICKER" = "Use old quality picker";
 "OLD_QUALITY_PICKER_DESC" = "Reverts the video quality selection menu to the classic version (lists all resolutions immediately).";
+"EXTRA_SPEED" = "Extra speed options";
+"EXTRA_SPEED_DESC" = "Adds more video playback speed options up to 10x.";
 "HIDE_LIKE_BUTTON" = "Hide Like button";
 "HIDE_LIKE_BUTTON_DESC" = "Hide Like button in the action bar under the video overlay.";
 "HIDE_DISLIKE_BUTTON" = "Hide Dislike button";
@@ -167,6 +171,8 @@
 "HIDE_SUBSCRIPT_TAB_DESC" = "Hide Subscriptions tab in the tab bar.";
 
 "MISCELLANEOUS" = "Miscellaneous";
+"BACKGROUND_PLAYBACK" = "Background playback";
+"BACKGROUND_PLAYBACK_DESC" = "Enables background playback for videos.";
 "DISABLES_SHORTS_PIP" = "Disables Shorts PiP";
 "DISABLES_SHORTS_PIP_DESC" = "Try to disables Shorts PiP, this might not 100% disables it.";
 "BLOCK_UPGRADE_DIALOGS" = "Block upgrade dialogs";

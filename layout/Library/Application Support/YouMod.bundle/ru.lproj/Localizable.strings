@@ -100,8 +100,12 @@
 "HIDE_CONTENT_WARNING_DESC" = "Автоматически пропускать предупреждение о деликатном содержимом в некоторых видео.";
 "AUTO_FULLSCREEN" = "Автополноэкранный режим";
 "AUTO_FULLSCREEN_DESC" = "Автоматически переходить в полноэкранный режим при запуске воспроизведения видео.";
+"PORTRAIT_FULLSCREEN" = "Portrait fullscreen mode";
+"PORTRAIT_FULLSCREEN_DESC" = "Enables portrait fullscreen mode support.";
 "OLD_QUALITY_PICKER" = "Использовать старый выбор качества";
 "OLD_QUALITY_PICKER_DESC" = "Вернуть классическое меню выбора качества видео, в котором сразу отображаются все разрешения.";
+"EXTRA_SPEED" = "Extra speed options";
+"EXTRA_SPEED_DESC" = "Adds more video playback speed options up to 10x.";
 "HIDE_LIKE_BUTTON" = "Скрыть кнопку «Нравится»";
 "HIDE_LIKE_BUTTON_DESC" = "Скрыть кнопку «Нравится» на панели действий под видео.";
 "HIDE_DISLIKE_BUTTON" = "Скрыть кнопку «Не нравится»";
@@ -167,6 +171,8 @@
 "HIDE_SUBSCRIPT_TAB_DESC" = "Скрыть вкладку «Подписки» на панели вкладок.";
 
 "MISCELLANEOUS" = "Разное";
+"BACKGROUND_PLAYBACK" = "Background playback";
+"BACKGROUND_PLAYBACK_DESC" = "Enables background playback for videos.";
 "DISABLES_SHORTS_PIP" = "Отключить PiP для Shorts";
 "DISABLES_SHORTS_PIP_DESC" = "Попробовать отключить режим «картинка в картинке» для Shorts; это может сработать не во всех случаях.";
 "BLOCK_UPGRADE_DIALOGS" = "Блокировать диалоги обновления";

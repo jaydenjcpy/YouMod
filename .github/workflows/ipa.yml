@@ -20,8 +20,92 @@ on:
         required: true
         type: string
 
+      youpip:
+        description: "Integrate YouPiP"
+        default: true
+        required: false
+        type: boolean
+
+      ytuhd:
+        description: "Integrate YTUHD"
+        default: true
+        required: false
+        type: boolean
+
+      ryd:
+        description: "Integrate Return-YouTube-Dislikes"
+        default: true
+        required: false
+        type: boolean
+
+      abconfig:
+        description: "Integrate YTABConfig"
+        default: true
+        required: false
+        type: boolean
+
+      youquality:
+        description: "Integrate YouQuality"
+        default: true
+        required: false
+        type: boolean
+
+      youspeed:
+        description: "Integrate YouSpeed"
+        default: true
+        required: false
+        type: boolean
+
       demc:
         description: "Integrate DontEatMyContent"
+        default: true
+        required: false
+        type: boolean
+
+      youmute:
+        description: "Integrate YouMute"
+        default: true
+        required: false
+        type: boolean
+
+      youloop:
+        description: "Integrate YouLoop"
+        default: true
+        required: false
+        type: boolean
+
+      ytweaks:
+        description: "Integrate YTweaks"
+        default: true
+        required: false
+        type: boolean
+
+      youslider:
+        description: "Integrate YouSlider"
+        default: true
+        required: false
+        type: boolean
+
+      youchoose:
+        description: "Integrate YouChooseQuality"
+        default: true
+        required: false
+        type: boolean
+
+      youshare:
+        description: "Integrate YouShare"
+        default: true
+        required: false
+        type: boolean
+
+      gonerino:
+        description: "Integrate Gonerino"
+        default: true
+        required: false
+        type: boolean
+
+      getcap:
+        description: "Integrate YouGetCaption"
         default: true
         required: false
         type: boolean
@@ -118,27 +202,34 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouMod.git
 
       - name: Clone YouPiP
+        if: ${{ inputs.youpip }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
     
       - name: Clone YTUHD
+        if: ${{ inputs.ytuhd }}
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTUHD.git
            
       - name: Clone Return-YouTube-Dislikes
+        if: ${{ inputs.ryd }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
 
       - name: Clone YouGroupSettings
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
            
       - name: Clone YTVideoOverlay
+        if: ${{ inputs.youpip || inputs.ytuhd || inputs.youquality || inputs.youspeed || inputs.youmute || inputs.youloop || inputs.youshare || inputs.getcap }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
           
       - name: Clone YTABConfig
+        if: ${{ inputs.abconfig }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
                   
       - name: Clone YouQuality
+        if: ${{ inputs.youquality }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouQuality.git
 
       - name: Clone YouSpeed
+        if: ${{ inputs.youspeed }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
       - name: Clone DontEatMyContent
@@ -146,30 +237,39 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
 
       - name: Clone YouMute
+        if: ${{ inputs.youmute }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
     
       - name: Clone YouLoop
+        if: ${{ inputs.youloop }}
         run: git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
 
-      - name: Clone YTweaks
-        run: git clone --quiet --depth=1 https://github.com/fosterbarnes/YTweaks.git
-
-      - name: Clone Alderis
-        run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
-
       - name: Clone YouSlider
+        if: ${{ inputs.youslider }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
 
+      - name: Clone Alderis
+        if: ${{ inputs.youslider }}
+        run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
+
       - name: Clone YouChooseQuality
+        if: ${{ inputs.youchoose }}
         run: git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
 
       - name: Clone YouShare
+        if: ${{ inputs.youshare }}
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouShare.git
 
+      - name: Clone YTweaks
+        if: ${{ inputs.ytweaks }}
+        run: git clone --quiet --depth=1 https://github.com/fosterbarnes/YTweaks.git
+
       - name: Clone Gonerino
+        if: ${{ inputs.gonerino }}
         run: git clone --quiet --depth=1 https://github.com/castdrian/Gonerino.git
 
       - name: Clone YouGetCaption
+        if: ${{ inputs.getcap }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
 
       - name: Clone youtube-native-share
@@ -188,18 +288,21 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/youmod.deb
         
       - name: Build YouPiP
+        if: ${{ inputs.youpip }}
         run: |
           cd YouPiP
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
 
       - name: Build YTUHD
+        if: ${{ inputs.ytuhd }}
         run: |
           cd YTUHD
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
 
       - name: Build Return-YouTube-Dislikes
+        if: ${{ inputs.ryd }}
         run: |
           cd Return-YouTube-Dislikes
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -212,24 +315,28 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
 
       - name: Build YTVideoOverlay
+        if: ${{ inputs.youpip || inputs.ytuhd || inputs.youquality || inputs.youspeed || inputs.youmute || inputs.youloop || inputs.youshare || inputs.getcap }}
         run: |
           cd YTVideoOverlay
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
 
       - name: Build YTABConfig
+        if: ${{ inputs.abconfig }}
         run: |
           cd YTABConfig
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytabconfig.deb
 
       - name: Build YouQuality
+        if: ${{ inputs.youquality }}
         run: |
           cd YouQuality
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youquality.deb
 
       - name: Build YouSpeed
+        if: ${{ inputs.youspeed }}
         run: |
           cd YouSpeed
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -243,30 +350,35 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/demc.deb
 
       - name: Build YouMute
+        if: ${{ inputs.youmute }}
         run: |
           cd YouMute
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ym.deb
 
       - name: Build YouLoop
+        if: ${{ inputs.youloop }}
         run: |
           cd YouLoop
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
 
       - name: Build YouSlider
+        if: ${{ inputs.youslider }}
         run: |
           cd YouSlider
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youslider.deb
 
       - name: Build Alderis
+        if: ${{ inputs.youslider }}
         run: |
           cd Alderis
           make clean package DEBUG=0 FINALPACKAGE=1 ARCHS=arm64
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
 
       - name: Build YouChooseQuality
+        if: ${{ inputs.youchoose }}
         run: |
           cd YouChooseQuality
           git checkout 1585a3691b2ef0b59d42c40c31639fd8b79e2cd4
@@ -274,24 +386,28 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/youchoose.deb
 
       - name: Build YouShare
+        if: ${{ inputs.youshare }}
         run: |
           cd YouShare
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youshare.deb
 
       - name: Build YTweaks
+        if: ${{ inputs.ytweaks }}
         run: |
           cd YTweaks
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
           
       - name: Build Gonerino
+        if: ${{ inputs.gonerino }}
         run: |
           cd Gonerino
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/gonerino.deb
 
       - name: Build YouGetCaption
+        if: ${{ inputs.getcap }}
         run: |
           cd YouGetCaption
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
