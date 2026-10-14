@@ -10,8 +10,18 @@
 %end
 
 %hook YTCommonColorPalette
-- (UIColor *)baseBackground { return self.pageStyle == 1 ? [UIColor blackColor] : %orig; }
-- (UIColor *)brandBackgroundSolid { return self.pageStyle == 1 ? [UIColor blackColor] : %orig; }
+- (UIColor *)baseBackground {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
+- (UIColor *)brandBackgroundSolid {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+    return %orig;
+}
 - (UIColor *)brandBackgroundPrimary { return self.pageStyle == 1 ? [UIColor blackColor] : %orig; }
 - (UIColor *)brandBackgroundSecondary { return self.pageStyle == 1 ? [UIColor blackColor] : %orig; }
 - (UIColor *)raisedBackground { return self.pageStyle == 1 ? [UIColor blackColor] : %orig; }
