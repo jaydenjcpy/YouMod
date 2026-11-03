@@ -65,6 +65,8 @@ jobs:
             git sparse-checkout set --no-cone iPhoneOS26.5.sdk
             git checkout --quiet
             mv *.sdk "$THEOS/sdks"
+            cd ${{ github.workspace }}/theos/vendor/logos
+            git checkout a623700
             
       - name: Clone headers
         run: |
